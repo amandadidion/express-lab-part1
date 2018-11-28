@@ -1,9 +1,13 @@
+"use strict";
+
 const express = require("express");
-const cart = require("./cart-items-routes");
+const items = require("./routes");
 const app = express();
-const port = 8080;
+const port = 8888;
 
 app.use(express.json());
-app.use("/cart-items", cart);
+app.use(express.static("./public"));
+app.use("/", items);
 
-app.listen(port, () => console.log(`cart items on: ${port}`));
+
+app.listen(port, () => console.log(`server up and running on localhost: ${port}`));
